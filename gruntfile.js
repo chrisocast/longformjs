@@ -15,7 +15,6 @@ module.exports = function(grunt) {
     meta: {
       banner:
         '/*!\n' +
-        ' * Longform.js <%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd, HH:MM") %>)\n' +
         ' * Longform.js <%= pkg.version %>\n' +
         ' * http://www.longformjs.com\n' +
         ' * MIT licensed\n' +
@@ -49,11 +48,6 @@ module.exports = function(grunt) {
         files: 'src/js/*.js',
         tasks: ['jshint', 'uglify', 'livereload']
       }
-    },
-
-    // Tests will be added soon
-    qunit: {
-      files: [ 'test/**/*.html' ]
     },
 
     uglify: {
