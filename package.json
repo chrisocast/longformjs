@@ -1,0 +1,39 @@
+{
+  "name": "longformjs",
+  "version": "0.0.1",
+  "description": "A Modern Storytelling Framework",
+  "homepage": "http://www.longformjs.com",
+  "author": {
+    "name": "Chris Cast",
+    "web": "http://www.chriscast.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chrisocast/longformjs.git"
+  },
+  "dependencies": {
+    "express": "3.1.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-regarde": "~0.1.1",
+    "grunt-contrib-livereload": "0.1.0rc8",
+    "grunt-contrib-connect": "~0.1.1rc6",
+    "grunt-casperjs": "~1.0.6",
+    "grunt-mocha": "~0.2.1",
+    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-contrib-cssmin": "~0.4.1",
+    "grunt-contrib-uglify": "~0.1.1",
+    "grunt-contrib-sass": "~0.2.2"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/chrisocast/longformjs/blob/master/LICENSE"
+    }
+  ]
+}
