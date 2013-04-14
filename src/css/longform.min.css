@@ -1,5 +1,5 @@
 /*!
- * Longform.js 0.0.1 (2013-04-13, 22:42)
+ * Longform.js 0.0.1
  * http://www.longformjs.com
  * MIT licensed
  * Copyright (C) 2013 Chris Cast, http://www.chriscast.com
