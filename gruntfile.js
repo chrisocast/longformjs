@@ -16,6 +16,7 @@ module.exports = function(grunt) {
       banner:
         '/*!\n' +
         ' * Longform.js <%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd, HH:MM") %>)\n' +
+        ' * Longform.js <%= pkg.version %>\n' +
         ' * http://www.longformjs.com\n' +
         ' * MIT licensed\n' +
         ' * Copyright (C) 2013 Chris Cast, http://www.chriscast.com\n' +
