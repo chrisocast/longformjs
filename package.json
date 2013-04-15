@@ -17,7 +17,7 @@
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-regarde": "~0.1.1",
-    "grunt-contrib-livereload": "0.1.0rc8",
+    "grunt-contrib-livereload": "https://github.com/gruntjs/grunt-contrib-livereload/archive/8afb5890f.tar.gz",
     "grunt-contrib-connect": "~0.1.1rc6",
     "grunt-casperjs": "~1.0.6",
     "grunt-mocha": "~0.2.1",
