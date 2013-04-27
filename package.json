@@ -11,24 +11,17 @@
     "type": "git",
     "url": "git://github.com/chrisocast/longformjs.git"
   },
-  "dependencies": {
-    "express": "3.1.0"
-  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-regarde": "~0.1.1",
-    "grunt-contrib-livereload": "https://github.com/gruntjs/grunt-contrib-livereload/archive/8afb5890f.tar.gz",
+    "grunt-contrib-livereload": "~0.1.1",
     "grunt-contrib-connect": "~0.1.1rc6",
     "grunt-casperjs": "~1.0.6",
-    "grunt-mocha": "~0.2.1",
-    "grunt-contrib-jshint": "~0.2.0",
-    "grunt-contrib-cssmin": "~0.4.1",
-    "grunt-contrib-uglify": "~0.1.1",
-    "grunt-contrib-sass": "~0.2.2"
-  },
-  "engines": {
-    "node": "0.8.x",
-    "npm": "1.1.x"
+    "grunt-mocha": "~0.3.1",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-cssmin": "~0.6.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-compass": "~0.1.1rc8"
   },
   "licenses": [
     {

@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       },
       scss: {
         files: 'src/css/sass/*.scss',
-        tasks: ['sass', 'cssmin', 'livereload']
+        tasks: ['compass:dev', 'cssmin', 'livereload']
       },
       js: {
         files: 'src/js/*.js',
@@ -71,10 +71,12 @@ module.exports = function(grunt) {
       }
     },
 
-    sass: {
-      main: {
-        files: {
-          'src/css/longform.css': 'src/css/sass/longform.scss'
+    compass: {
+      dev: {
+        options: {
+          sassDir: 'src/css/sass',
+          cssDir: 'src/css',
+          debugInfo: true
         }
       }
     },
@@ -108,12 +110,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-livereload');
   grunt.loadNpmTasks('grunt-contrib-jshint' );
-  grunt.loadNpmTasks('grunt-contrib-cssmin' );
+  grunt.loadNpmTasks('grunt-contrib-compass' );
   grunt.loadNpmTasks('grunt-contrib-uglify' );
-  grunt.loadNpmTasks('grunt-contrib-sass' );
+  grunt.loadNpmTasks('grunt-contrib-cssmin' );
   //grunt.loadNpmTasks('grunt-mocha');
   //grunt.loadNpmTasks('grunt-casperjs');
 
   // Default task
-  grunt.registerTask( 'default', [ 'jshint', 'uglify', 'sass', 'cssmin', 'livereload-start', 'connect', 'regarde'] );
+  grunt.registerTask( 'default', [ 'jshint', 'uglify', 'compass:dev', 'cssmin', 'livereload-start', 'connect', 'regarde'] );
 };
