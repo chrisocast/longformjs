@@ -76,7 +76,8 @@ module.exports = function(grunt) {
         options: {
           sassDir: 'src/css/sass',
           cssDir: 'src/css',
-          debugInfo: true
+          debugInfo: true,
+          require: ['singularitygs']
         }
       }
     },
