@@ -9,11 +9,10 @@
   &:after { clear: both; }
 }
 
-*, *:before, *:after {
-  box-sizing: border-box;
-    -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-}
-
 // PARTIALS //////////////////
 @import "base";
+@import "main";
+@import "components";
+
+// OPTIONAL, CUSTOM CSS
+@import "../custom.css"

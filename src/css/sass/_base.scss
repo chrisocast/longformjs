@@ -1,3 +1,73 @@
+// QUICK SETTINGS ///////////////////////////////////
+
+$em-base            : 16px;
+$body-bg            : #fff !default;
+$linkColor          : #555;
+$coloredText        : #336699;
+$linkHoverColor     : saturate($coloredText, 15%);
+$highText           : saturate(lighten($coloredText, 15%), 40%);;
+$headingsFont       : "Helvetica", "Helvetica Neue", "Lato", Helvetica, Arial, sans-serif;
+$body-font-family   : sans-serif;
+$body-font-color    : #666;
+@include establish-baseline;
+
+// BASE CLASSES ////////////////////////////////////////
+html {
+  font-size: $em-base;
+}
+body {
+  background: $body-bg;
+  color: $body-font-color;
+  font-family: $body-font-family;
+  -webkit-font-smoothing: antialiased;
+}
+h1 {
+  @include adjust-font-size-to(26px);
+  @include adjust-leading-to(1.45, 26px);
+}
+h2 {
+  @include adjust-font-size-to(16px);
+  @include adjust-leading-to(.9);
+}
+h3 {
+  @include adjust-font-size-to(16px);
+  @include adjust-leading-to(.9);
+  font-weight: normal;
+  margin:10px 0 0;
+}
+h4 {
+  @include adjust-font-size-to(14px);
+  @include adjust-leading-to(.9);
+  font-weight: normal;
+}
+h1, h2, h3, h4{margin:0;}
+a {
+  &:link {color:$linkColor;}
+  &:visited {color:$linkColor;}
+  &:hover {color: $linkHoverColor};
+  text-decoration: none;
+}
+img, object, embed {
+    height: auto;
+    max-width: 100%;
+}
+img {border: 1px solid #666;}
+ul {margin: 0; 
+    padding: 0;
+    display: inline-block;
+}
+li {
+  margin: 0; padding: 0;
+  float:left;
+  list-style: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+    -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+}
+
 .left         { float: left !important; }
 .right        { float: right !important; }
 .hide         { display: none; }

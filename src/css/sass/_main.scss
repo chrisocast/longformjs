@@ -1,0 +1,48 @@
+// SINGULARITY VARS ///////////////////////////////////
+$small-bp: 320px;
+$medium-bp: 640px;
+$large-bp: 1024px;
+
+$small-cols: 6;
+$medium-cols: 8;
+$large-cols: 12;
+
+$output: 'float';
+$gutters: .2;
+$grids: 4;
+$grids: add-grid($small-cols at $small-bp);
+$grids: add-grid($medium-cols at $medium-bp);
+$grids: add-grid($large-cols at $large-bp);
+
+// MAIN CONTAINER //////////
+article.longformjs {
+
+  min-width: 300px;
+  min-height: 100%;
+
+  @include breakpoint($large-bp) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1, h2, p {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 640px;
+  }
+
+  header{
+    padding: 0 10px;
+    background: #ddd; //temp
+  }
+
+  section{
+    padding: 0 10px;
+    background: #ddd; //temp
+  }
+
+  footer{
+    padding: 0 10px;
+    background: #ddd; //temp
+  }
+}
