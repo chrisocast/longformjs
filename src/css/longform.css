@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url(../custom.css);
 /* normalize.css v2.1.0 | MIT License | git.io/normalize */
 /* normalize.scss v2.1.0 | MIT/GPLv2 License | bit.ly/normalize-with-compass */
 /* ==========================================================================
@@ -693,35 +692,35 @@ li {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000319}}
 article.longformjs {
   min-width: 300px;
   min-height: 100%;
 }
 @media (min-width: 1024px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000319}}
   article.longformjs {
     margin-left: auto;
     margin-right: auto;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000329}}
 article.longformjs h1, article.longformjs h2, article.longformjs p {
   margin-left: auto;
   margin-right: auto;
   max-width: 640px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000335}}
 article.longformjs header {
   padding: 0 10px;
   background: #ddd;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000340}}
 article.longformjs section {
   padding: 0 10px;
   background: #ddd;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000344}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000345}}
 article.longformjs footer {
   padding: 0 10px;
   background: #ddd;
