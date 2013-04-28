@@ -645,24 +645,13 @@ a:hover {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000350}}
-img, object, embed {
-  height: auto;
-  max-width: 100%;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000354}}
-img {
-  border: 1px solid #666;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000355}}
 ul {
   margin: 0;
   padding: 0;
   display: inline-block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000354}}
 li {
   margin: 0;
   padding: 0;
@@ -670,26 +659,51 @@ li {
   list-style: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000365}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000359}}
 *, *:before, *:after {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000371}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000365}}
 .left {
   float: left !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000366}}
 .right {
   float: right !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000373}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000367}}
 .hide {
   display: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000371}}
+img, object, embed {
+  height: auto;
+  max-width: 100%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000376}}
+img {
+  border: 1px solid #666;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000378}}
+.credit {
+  font-size: 0.6875em;
+  line-height: 2.18182em;
+  line-height: 1.35em;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_base\.scss}line{font-family:\0000383}}
+.caption {
+  font-size: 0.75em;
+  line-height: 2em;
+  line-height: 1.35em;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000319}}
@@ -712,17 +726,21 @@ article.longformjs h1, article.longformjs h2, article.longformjs p {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000335}}
 article.longformjs header {
-  padding: 0 10px;
   background: #ddd;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000340}}
 article.longformjs section {
-  padding: 0 10px;
+  margin: 20px 0;
   background: #ddd;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000348}}
+article.longformjs section.media img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/longformjs\/src\/css\/sass\/_main\.scss}line{font-family:\0000356}}
 article.longformjs footer {
-  padding: 0 10px;
   background: #ddd;
 }
 

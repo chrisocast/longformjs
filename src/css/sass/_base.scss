@@ -47,11 +47,6 @@ a {
   &:hover {color: $linkHoverColor};
   text-decoration: none;
 }
-img, object, embed {
-    height: auto;
-    max-width: 100%;
-}
-img {border: 1px solid #666;}
 ul {margin: 0; 
     padding: 0;
     display: inline-block;
@@ -61,7 +56,6 @@ li {
   float:left;
   list-style: none;
 }
-
 *, *:before, *:after {
   box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -71,3 +65,27 @@ li {
 .left         { float: left !important; }
 .right        { float: right !important; }
 .hide         { display: none; }
+
+// MEDIA ///////////////////////////////
+
+img, object, embed {
+    height: auto;
+    max-width: 100%;
+}
+
+img {border: 1px solid #666;}
+
+.credit{
+  @include adjust-font-size-to(11px);
+  @include adjust-leading-to(.9);
+}
+
+.caption{
+  @include adjust-font-size-to(12px);
+  @include adjust-leading-to(.9);
+}
+
+
+
+
+
