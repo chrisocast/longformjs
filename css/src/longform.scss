@@ -1,7 +1,8 @@
 @charset "UTF-8";
-@import "../../../components/normalize.scss/normalize";
+@import "../../components/normalize.scss/normalize";
 //@import "compass";
 @import "singularitygs";
+
 
 @mixin clearfix() {
   *zoom:1;

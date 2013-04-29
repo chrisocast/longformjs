@@ -73,14 +73,15 @@ img, object, embed {
     max-width: 100%;
 }
 
-img {border: 1px solid #666;}
-
 .credit{
+  color: #bbb;
+  text-align: right;
   @include adjust-font-size-to(11px);
   @include adjust-leading-to(.9);
 }
 
 .caption{
+  color: #ccc;
   @include adjust-font-size-to(12px);
   @include adjust-leading-to(.9);
 }

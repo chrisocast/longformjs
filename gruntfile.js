@@ -41,12 +41,26 @@ module.exports = function(grunt) {
         tasks: ['livereload']
       },
       scss: {
-        files: 'src/css/sass/*.scss',
+        files: 'css/src/*.scss',
         tasks: ['compass:dev', 'cssmin', 'livereload']
       },
       js: {
-        files: 'src/js/*.js',
-        tasks: ['jshint', 'uglify', 'livereload']
+        files: 'js/src/*.js',
+        tasks: ['requirejs:dev', 'livereload']
+      }
+    },
+
+    requirejs: {
+      dev: {
+        options: {
+          out: './js/longform.js',
+          mainConfigFile: './js/src/config.js',
+          name: 'requireLib',
+          paths: {
+              requireLib: '../../components/requirejs/require'
+          },
+          optimize: 'none'
+        }
       }
     },
 
@@ -55,8 +69,8 @@ module.exports = function(grunt) {
         banner: '<%= meta.banner %>\n'
       },
       build: {
-        src: 'src/js/longform.js',
-        dest: 'src/js/longform.min.js'
+        src: 'js/longform.js',
+        dest: 'js/longform.min.js'
       }
     },
 
@@ -66,7 +80,7 @@ module.exports = function(grunt) {
       },
       compress: {
         files: {
-          'src/css/longform.min.css': [ 'src/css/longform.css' ]
+          'css/longform.min.css': [ 'css/longform.css' ]
         }
       }
     },
@@ -74,12 +88,20 @@ module.exports = function(grunt) {
     compass: {
       dev: {
         options: {
-          sassDir: 'src/css/sass',
-          cssDir: 'src/css',
+          sassDir: 'css/src',
+          cssDir: 'css',
           debugInfo: true,
           require: ['singularitygs']
         }
-      }
+      },
+      prod: {
+        options: {
+          sassDir: 'css/src',
+          cssDir: 'css',
+          environment: 'production',
+          require: ['singularitygs']
+        }
+      },
     },
 
     jshint: {
@@ -98,10 +120,12 @@ module.exports = function(grunt) {
         globals: {
           head: false,
           module: false,
-          console: false
+          console: false,
+          jQuery: true,
+          require: true
         }
       },
-      files: ['src/js/longform.js' ]
+      files: ['js/src/*.js' ]
     }
 
   });
@@ -112,11 +136,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-livereload');
   grunt.loadNpmTasks('grunt-contrib-jshint' );
   grunt.loadNpmTasks('grunt-contrib-compass' );
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-uglify' );
   grunt.loadNpmTasks('grunt-contrib-cssmin' );
   //grunt.loadNpmTasks('grunt-mocha');
   //grunt.loadNpmTasks('grunt-casperjs');
 
   // Default task
-  grunt.registerTask( 'default', [ 'jshint', 'uglify', 'compass:dev', 'cssmin', 'livereload-start', 'connect', 'regarde'] );
+  grunt.registerTask( 'default', ['requirejs', 'jshint', 'compass:dev', 'livereload-start', 'connect', 'regarde'] );
+  grunt.registerTask( 'build', ['requirejs', 'jshint', 'uglify', 'compass:prod', 'cssmin'] );
 };

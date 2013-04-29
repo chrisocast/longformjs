@@ -41,16 +41,27 @@ article.longformjs {
     margin: 20px 0;
     background: #ddd; //temp
 
+    // Section Types ////////////////////
     &.media{
       //max-height: 300px;
       //overflow: hidden;
+      background: #333;
+
+      p{margin-top:0;margin-bottom:0;}
 
       img{
         margin-left: auto;
         margin-right: auto;
         display: block;
+        max-height:600px;
       }
     }
+
+
+
+
+
+
   }
 
   footer{
