@@ -50,7 +50,7 @@ module.exports = function(grunt) {
       },
       handlebars: {
         files: 'js/src/templates/*.hbs',
-        tasks: ['handlebars', 'livereload']
+        tasks: ['handlebars', 'requirejs:dev', 'livereload']
       }
     },
 
