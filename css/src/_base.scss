@@ -1,5 +1,4 @@
 // QUICK SETTINGS ///////////////////////////////////
-
 $em-base            : 16px;
 $body-bg            : #fff !default;
 $linkColor          : #555;
@@ -21,26 +20,28 @@ body {
   font-family: $body-font-family;
   -webkit-font-smoothing: antialiased;
 }
+h2, h3, h4{margin:0 0 1em 0;}
 h1 {
-  @include adjust-font-size-to(26px);
-  @include adjust-leading-to(1.45, 26px);
+  margin:0;
+  @include adjust-font-size-to(48px);
+  @include adjust-leading-to(.9);
 }
 h2 {
-  @include adjust-font-size-to(16px);
+  @include adjust-font-size-to(20px);
   @include adjust-leading-to(.9);
 }
 h3 {
   @include adjust-font-size-to(16px);
   @include adjust-leading-to(.9);
-  font-weight: normal;
-  margin:10px 0 0;
 }
 h4 {
   @include adjust-font-size-to(14px);
   @include adjust-leading-to(.9);
   font-weight: normal;
 }
-h1, h2, h3, h4{margin:0;}
+p {
+  margin: 0 0 1.5em 0;
+}
 a {
   &:link {color:$linkColor;}
   &:visited {color:$linkColor;}
@@ -74,14 +75,12 @@ img, object, embed {
 }
 
 .credit{
-  color: #bbb;
   text-align: right;
   @include adjust-font-size-to(11px);
   @include adjust-leading-to(.9);
 }
 
 .caption{
-  color: #ccc;
   @include adjust-font-size-to(12px);
   @include adjust-leading-to(.9);
 }

@@ -1,11 +1,13 @@
-require(['jquery', 'html5shiv'], function($, html5shiv){
+require(['jquery', 'html5shiv', 'handlebars', 'templates'], function($, html5shiv, Handlebars, templates){
   $(function(){
-    
-    var mainEls = $('header');
 
-    for (var i = mainEls.length - 1; i >= 0; i--) {
-      console.log("mainEls[i]: ", mainEls[i]);
+    var sections = document.getElementsByTagName('section');
+    var sectionsTotal = sections.length;
+
+    for (var i = sectionsTotal - 1; i >= 0; i--) {
+      if (sections[i].dataset.type === 'poster'){
+        sections[i].innerHTML = templates['poster'](sections[i].dataset);
+      }
     }
-
   });
 });

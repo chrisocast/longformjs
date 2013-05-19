@@ -37,7 +37,7 @@ module.exports = function(grunt) {
     // files to watch & tasks to run when they're changed
     regarde: {
       markup: {
-        files: 'index.html',
+        files: ['index.html', 'examples/**/*.html'],
         tasks: ['livereload']
       },
       scss: {
@@ -47,6 +47,10 @@ module.exports = function(grunt) {
       js: {
         files: 'js/src/*.js',
         tasks: ['requirejs:dev', 'livereload']
+      },
+      handlebars: {
+        files: 'js/src/templates/*.hbs',
+        tasks: ['handlebars', 'livereload']
       }
     },
 
@@ -86,6 +90,7 @@ module.exports = function(grunt) {
     },
 
     compass: {
+      // todo: https://github.com/gruntjs/grunt-contrib-compass/issues/18
       dev: {
         options: {
           sassDir: 'css/src',
@@ -102,6 +107,20 @@ module.exports = function(grunt) {
           require: ['singularitygs']
         }
       },
+    },
+
+    handlebars: {
+      compile: {
+        options: {
+          amd: true,
+          processName: function(filename) {
+            return filename.replace('js/src/templates/', '').replace('.hbs', '');
+          }
+        },
+        files: {
+          "js/src/templates/templates.js": "js/src/templates/*.hbs"
+        }
+      }
     },
 
     jshint: {
@@ -139,10 +158,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-uglify' );
   grunt.loadNpmTasks('grunt-contrib-cssmin' );
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
   //grunt.loadNpmTasks('grunt-mocha');
   //grunt.loadNpmTasks('grunt-casperjs');
 
   // Default task
-  grunt.registerTask( 'default', ['requirejs', 'jshint', 'compass:dev', 'livereload-start', 'connect', 'regarde'] );
-  grunt.registerTask( 'build', ['requirejs', 'jshint', 'uglify', 'compass:prod', 'cssmin'] );
+  grunt.registerTask( 'default', ['requirejs', 'jshint', 'handlebars', 'compass:dev', 'livereload-start', 'connect', 'regarde'] );
+  grunt.registerTask( 'build', ['requirejs', 'jshint', 'handlebars', 'uglify', 'compass:prod', 'cssmin'] );
 };

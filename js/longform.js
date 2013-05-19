@@ -1,6 +1,6 @@
 
 /** vim: et:ts=4:sw=4:sts=4
- * @license RequireJS 2.1.5 Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
+ * @license RequireJS 2.1.6 Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
  * see: http://github.com/jrburke/requirejs for details
  */
@@ -13,7 +13,7 @@ var requirejs, require, define;
 (function (global) {
     var req, s, head, baseElement, dataMain, src,
         interactiveScript, currentlyAddingScript, mainScript, subPath,
-        version = '2.1.5',
+        version = '2.1.6',
         commentRegExp = /(\/\*([\s\S]*?)\*\/|([^:]|^)\/\/(.*)$)/mg,
         cjsRequireRegExp = /[^.]\s*require\s*\(\s*["']([^'"\s]+)["']\s*\)/g,
         jsSuffixRegExp = /\.js$/,
@@ -23,7 +23,7 @@ var requirejs, require, define;
         hasOwn = op.hasOwnProperty,
         ap = Array.prototype,
         apsp = ap.splice,
-        isBrowser = !!(typeof window !== 'undefined' && navigator && document),
+        isBrowser = !!(typeof window !== 'undefined' && navigator && window.document),
         isWebWorker = !isBrowser && typeof importScripts !== 'undefined',
         //PS3 indicates loaded and complete, but need to wait for complete
         //specifically. Sequence is 'loading', 'loaded', execution,
@@ -133,6 +133,10 @@ var requirejs, require, define;
 
     function scripts() {
         return document.getElementsByTagName('script');
+    }
+
+    function defaultOnError(err) {
+        throw err;
     }
 
     //Allow getting a global that expressed in
@@ -501,7 +505,12 @@ var requirejs, require, define;
                     fn(defined[id]);
                 }
             } else {
-                getModule(depMap).on(name, fn);
+                mod = getModule(depMap);
+                if (mod.error && name === 'error') {
+                    fn(mod.error);
+                } else {
+                    mod.on(name, fn);
+                }
             }
         }
 
@@ -572,7 +581,13 @@ var requirejs, require, define;
                         id: mod.map.id,
                         uri: mod.map.url,
                         config: function () {
-                            return (config.config && getOwn(config.config, mod.map.id)) || {};
+                            var c,
+                                pkg = getOwn(config.pkgs, mod.map.id);
+                            // For packages, only support config targeted
+                            // at the main module.
+                            c = pkg ? getOwn(config.config, mod.map.id + '/' + pkg.main) :
+                                      getOwn(config.config, mod.map.id);
+                            return  c || {};
                         },
                         exports: defined[mod.map.id]
                     });
@@ -841,8 +856,13 @@ var requirejs, require, define;
                     if (this.depCount < 1 && !this.defined) {
                         if (isFunction(factory)) {
                             //If there is an error listener, favor passing
-                            //to that instead of throwing an error.
-                            if (this.events.error) {
+                            //to that instead of throwing an error. However,
+                            //only do it for define()'d  modules. require
+                            //errbacks should not be called for failures in
+                            //their callbacks (#699). However if a global
+                            //onError is set, use that.
+                            if ((this.events.error && this.map.isDefine) ||
+                                req.onError !== defaultOnError) {
                                 try {
                                     exports = context.execCb(id, factory, depExports, exports);
                                 } catch (e) {
@@ -870,8 +890,8 @@ var requirejs, require, define;
 
                             if (err) {
                                 err.requireMap = this.map;
-                                err.requireModules = [this.map.id];
-                                err.requireType = 'define';
+                                err.requireModules = this.map.isDefine ? [this.map.id] : null;
+                                err.requireType = this.map.isDefine ? 'define' : 'require';
                                 return onError((this.error = err));
                             }
 
@@ -1094,7 +1114,7 @@ var requirejs, require, define;
                         }));
 
                         if (this.errback) {
-                            on(depMap, 'error', this.errback);
+                            on(depMap, 'error', bind(this, this.errback));
                         }
                     }
 
@@ -1606,7 +1626,7 @@ var requirejs, require, define;
             },
 
             /**
-             * Executes a module callack function. Broken out as a separate function
+             * Executes a module callback function. Broken out as a separate function
              * solely to allow the build system to sequence the files in the built
              * layer in the right sequence.
              *
@@ -1644,7 +1664,7 @@ var requirejs, require, define;
             onScriptError: function (evt) {
                 var data = getScriptData(evt);
                 if (!hasPathFallback(data.id)) {
-                    return onError(makeError('scripterror', 'Script error', evt, [data.id]));
+                    return onError(makeError('scripterror', 'Script error for: ' + data.id, evt, [data.id]));
                 }
             }
         };
@@ -1773,9 +1793,7 @@ var requirejs, require, define;
      * function. Intercept/override it if you want custom error handling.
      * @param {Error} err the error object.
      */
-    req.onError = function (err) {
-        throw err;
-    };
+    req.onError = defaultOnError;
 
     /**
      * Does the request to load a module for the browser case.
@@ -1907,24 +1925,31 @@ var requirejs, require, define;
             //baseUrl, if it is not already set.
             dataMain = script.getAttribute('data-main');
             if (dataMain) {
+                //Preserve dataMain in case it is a path (i.e. contains '?')
+                mainScript = dataMain;
+
                 //Set final baseUrl if there is not already an explicit one.
                 if (!cfg.baseUrl) {
                     //Pull off the directory of data-main for use as the
                     //baseUrl.
-                    src = dataMain.split('/');
+                    src = mainScript.split('/');
                     mainScript = src.pop();
                     subPath = src.length ? src.join('/')  + '/' : './';
 
                     cfg.baseUrl = subPath;
-                    dataMain = mainScript;
                 }
 
-                //Strip off any trailing .js since dataMain is now
+                //Strip off any trailing .js since mainScript is now
                 //like a module name.
-                dataMain = dataMain.replace(jsSuffixRegExp, '');
+                mainScript = mainScript.replace(jsSuffixRegExp, '');
+
+                 //If mainScript is still a path, fall back to dataMain
+                if (req.jsExtRegExp.test(mainScript)) {
+                    mainScript = dataMain;
+                }
 
                 //Put the data-main script in the files to load.
-                cfg.deps = cfg.deps ? cfg.deps.concat(dataMain) : [dataMain];
+                cfg.deps = cfg.deps ? cfg.deps.concat(mainScript) : [mainScript];
 
                 return true;
             }
@@ -1952,12 +1977,13 @@ var requirejs, require, define;
         //This module may not have dependencies
         if (!isArray(deps)) {
             callback = deps;
-            deps = [];
+            deps = null;
         }
 
         //If no name, and callback is a function, then figure out if it a
         //CommonJS thing with dependencies.
-        if (!deps.length && isFunction(callback)) {
+        if (!deps && isFunction(callback)) {
+            deps = [];
             //Remove comments from the callback string,
             //look for require calls, and pull them into the dependencies,
             //but only if there are function args.
@@ -11629,15 +11655,403 @@ for(var b=b||i(a),c=b.frag.cloneNode(),d=0,e=m(),h=e.length;d<h;d++)c.createElem
 
 define("html5shiv", function(){});
 
-require(['jquery', 'html5shiv'], function($, html5shiv){
-  $(function(){
-    
-    var mainEls = $('header');
+/*
 
-    for (var i = mainEls.length - 1; i >= 0; i--) {
-      console.log("mainEls[i]: ", mainEls[i]);
+Copyright (C) 2011 by Yehuda Katz
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+*/
+
+// lib/handlebars/browser-prefix.js
+var Handlebars = {};
+
+(function(Handlebars, undefined) {
+;
+// lib/handlebars/base.js
+
+Handlebars.VERSION = "1.0.0-rc.4";
+Handlebars.COMPILER_REVISION = 3;
+
+Handlebars.REVISION_CHANGES = {
+  1: '<= 1.0.rc.2', // 1.0.rc.2 is actually rev2 but doesn't report it
+  2: '== 1.0.0-rc.3',
+  3: '>= 1.0.0-rc.4'
+};
+
+Handlebars.helpers  = {};
+Handlebars.partials = {};
+
+var toString = Object.prototype.toString,
+    functionType = '[object Function]',
+    objectType = '[object Object]';
+
+Handlebars.registerHelper = function(name, fn, inverse) {
+  if (toString.call(name) === objectType) {
+    if (inverse || fn) { throw new Handlebars.Exception('Arg not supported with multiple helpers'); }
+    Handlebars.Utils.extend(this.helpers, name);
+  } else {
+    if (inverse) { fn.not = inverse; }
+    this.helpers[name] = fn;
+  }
+};
+
+Handlebars.registerPartial = function(name, str) {
+  if (toString.call(name) === objectType) {
+    Handlebars.Utils.extend(this.partials,  name);
+  } else {
+    this.partials[name] = str;
+  }
+};
+
+Handlebars.registerHelper('helperMissing', function(arg) {
+  if(arguments.length === 2) {
+    return undefined;
+  } else {
+    throw new Error("Could not find property '" + arg + "'");
+  }
+});
+
+Handlebars.registerHelper('blockHelperMissing', function(context, options) {
+  var inverse = options.inverse || function() {}, fn = options.fn;
+
+  var type = toString.call(context);
+
+  if(type === functionType) { context = context.call(this); }
+
+  if(context === true) {
+    return fn(this);
+  } else if(context === false || context == null) {
+    return inverse(this);
+  } else if(type === "[object Array]") {
+    if(context.length > 0) {
+      return Handlebars.helpers.each(context, options);
+    } else {
+      return inverse(this);
+    }
+  } else {
+    return fn(context);
+  }
+});
+
+Handlebars.K = function() {};
+
+Handlebars.createFrame = Object.create || function(object) {
+  Handlebars.K.prototype = object;
+  var obj = new Handlebars.K();
+  Handlebars.K.prototype = null;
+  return obj;
+};
+
+Handlebars.logger = {
+  DEBUG: 0, INFO: 1, WARN: 2, ERROR: 3, level: 3,
+
+  methodMap: {0: 'debug', 1: 'info', 2: 'warn', 3: 'error'},
+
+  // can be overridden in the host environment
+  log: function(level, obj) {
+    if (Handlebars.logger.level <= level) {
+      var method = Handlebars.logger.methodMap[level];
+      if (typeof console !== 'undefined' && console[method]) {
+        console[method].call(console, obj);
+      }
+    }
+  }
+};
+
+Handlebars.log = function(level, obj) { Handlebars.logger.log(level, obj); };
+
+Handlebars.registerHelper('each', function(context, options) {
+  var fn = options.fn, inverse = options.inverse;
+  var i = 0, ret = "", data;
+
+  if (options.data) {
+    data = Handlebars.createFrame(options.data);
+  }
+
+  if(context && typeof context === 'object') {
+    if(context instanceof Array){
+      for(var j = context.length; i<j; i++) {
+        if (data) { data.index = i; }
+        ret = ret + fn(context[i], { data: data });
+      }
+    } else {
+      for(var key in context) {
+        if(context.hasOwnProperty(key)) {
+          if(data) { data.key = key; }
+          ret = ret + fn(context[key], {data: data});
+          i++;
+        }
+      }
+    }
+  }
+
+  if(i === 0){
+    ret = inverse(this);
+  }
+
+  return ret;
+});
+
+Handlebars.registerHelper('if', function(context, options) {
+  var type = toString.call(context);
+  if(type === functionType) { context = context.call(this); }
+
+  if(!context || Handlebars.Utils.isEmpty(context)) {
+    return options.inverse(this);
+  } else {
+    return options.fn(this);
+  }
+});
+
+Handlebars.registerHelper('unless', function(context, options) {
+  return Handlebars.helpers['if'].call(this, context, {fn: options.inverse, inverse: options.fn});
+});
+
+Handlebars.registerHelper('with', function(context, options) {
+  if (!Handlebars.Utils.isEmpty(context)) return options.fn(context);
+});
+
+Handlebars.registerHelper('log', function(context, options) {
+  var level = options.data && options.data.level != null ? parseInt(options.data.level, 10) : 1;
+  Handlebars.log(level, context);
+});
+;
+// lib/handlebars/utils.js
+
+var errorProps = ['description', 'fileName', 'lineNumber', 'message', 'name', 'number', 'stack'];
+
+Handlebars.Exception = function(message) {
+  var tmp = Error.prototype.constructor.apply(this, arguments);
+
+  // Unfortunately errors are not enumerable in Chrome (at least), so `for prop in tmp` doesn't work.
+  for (var idx = 0; idx < errorProps.length; idx++) {
+    this[errorProps[idx]] = tmp[errorProps[idx]];
+  }
+};
+Handlebars.Exception.prototype = new Error();
+
+// Build out our basic SafeString type
+Handlebars.SafeString = function(string) {
+  this.string = string;
+};
+Handlebars.SafeString.prototype.toString = function() {
+  return this.string.toString();
+};
+
+var escape = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#x27;",
+  "`": "&#x60;"
+};
+
+var badChars = /[&<>"'`]/g;
+var possible = /[&<>"'`]/;
+
+var escapeChar = function(chr) {
+  return escape[chr] || "&amp;";
+};
+
+Handlebars.Utils = {
+  extend: function(obj, value) {
+    for(var key in value) {
+      if(value.hasOwnProperty(key)) {
+        obj[key] = value[key];
+      }
+    }
+  },
+
+  escapeExpression: function(string) {
+    // don't escape SafeStrings, since they're already safe
+    if (string instanceof Handlebars.SafeString) {
+      return string.toString();
+    } else if (string == null || string === false) {
+      return "";
     }
 
+    // Force a string conversion as this will be done by the append regardless and
+    // the regex test will do this transparently behind the scenes, causing issues if
+    // an object's to string has escaped characters in it.
+    string = string.toString();
+
+    if(!possible.test(string)) { return string; }
+    return string.replace(badChars, escapeChar);
+  },
+
+  isEmpty: function(value) {
+    if (!value && value !== 0) {
+      return true;
+    } else if(toString.call(value) === "[object Array]" && value.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+};
+;
+// lib/handlebars/runtime.js
+
+Handlebars.VM = {
+  template: function(templateSpec) {
+    // Just add water
+    var container = {
+      escapeExpression: Handlebars.Utils.escapeExpression,
+      invokePartial: Handlebars.VM.invokePartial,
+      programs: [],
+      program: function(i, fn, data) {
+        var programWrapper = this.programs[i];
+        if(data) {
+          programWrapper = Handlebars.VM.program(i, fn, data);
+        } else if (!programWrapper) {
+          programWrapper = this.programs[i] = Handlebars.VM.program(i, fn);
+        }
+        return programWrapper;
+      },
+      programWithDepth: Handlebars.VM.programWithDepth,
+      noop: Handlebars.VM.noop,
+      compilerInfo: null
+    };
+
+    return function(context, options) {
+      options = options || {};
+      var result = templateSpec.call(container, Handlebars, context, options.helpers, options.partials, options.data);
+
+      var compilerInfo = container.compilerInfo || [],
+          compilerRevision = compilerInfo[0] || 1,
+          currentRevision = Handlebars.COMPILER_REVISION;
+
+      if (compilerRevision !== currentRevision) {
+        if (compilerRevision < currentRevision) {
+          var runtimeVersions = Handlebars.REVISION_CHANGES[currentRevision],
+              compilerVersions = Handlebars.REVISION_CHANGES[compilerRevision];
+          throw "Template was precompiled with an older version of Handlebars than the current runtime. "+
+                "Please update your precompiler to a newer version ("+runtimeVersions+") or downgrade your runtime to an older version ("+compilerVersions+").";
+        } else {
+          // Use the embedded version info since the runtime doesn't know about this revision yet
+          throw "Template was precompiled with a newer version of Handlebars than the current runtime. "+
+                "Please update your runtime to a newer version ("+compilerInfo[1]+").";
+        }
+      }
+
+      return result;
+    };
+  },
+
+  programWithDepth: function(i, fn, data /*, $depth */) {
+    var args = Array.prototype.slice.call(arguments, 3);
+
+    var program = function(context, options) {
+      options = options || {};
+
+      return fn.apply(this, [context, options.data || data].concat(args));
+    };
+    program.program = i;
+    program.depth = args.length;
+    return program;
+  },
+  program: function(i, fn, data) {
+    var program = function(context, options) {
+      options = options || {};
+
+      return fn(context, options.data || data);
+    };
+    program.program = i;
+    program.depth = 0;
+    return program;
+  },
+  noop: function() { return ""; },
+  invokePartial: function(partial, name, context, helpers, partials, data) {
+    var options = { helpers: helpers, partials: partials, data: data };
+
+    if(partial === undefined) {
+      throw new Handlebars.Exception("The partial " + name + " could not be found");
+    } else if(partial instanceof Function) {
+      return partial(context, options);
+    } else if (!Handlebars.compile) {
+      throw new Handlebars.Exception("The partial " + name + " could not be compiled when running in runtime-only mode");
+    } else {
+      partials[name] = Handlebars.compile(partial, {data: data !== undefined});
+      return partials[name](context, options);
+    }
+  }
+};
+
+Handlebars.template = Handlebars.VM.template;
+;
+// lib/handlebars/browser-suffix.js
+})(Handlebars);
+;
+
+define("handlebars", (function (global) {
+    return function () {
+        var ret, fn;
+        return ret || global.Handlebars;
+    };
+}(this)));
+
+define('templates',['handlebars'], function(Handlebars) {
+
+this["JST"] = this["JST"] || {};
+
+this["JST"]["poster"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [3,'>= 1.0.0-rc.4'];
+helpers = helpers || Handlebars.helpers; data = data || {};
+  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<section class=\"media\">\n  <img src=\"";
+  if (stack1 = helpers.src) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.src; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "\" alt=\"";
+  if (stack1 = helpers.alt) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.alt; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "\">\n  <div class=\"credit\"><p>";
+  if (stack1 = helpers.credit) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.credit; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</p></div>\n  <div class=\"caption\"><p>";
+  if (stack1 = helpers.caption) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.caption; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</p></div>\n</section>";
+  return buffer;
+  });
+
+return this["JST"];
+
+});
+require(['jquery', 'html5shiv', 'handlebars', 'templates'], function($, html5shiv, Handlebars, templates){
+  $(function(){
+
+    var sections = document.getElementsByTagName('section');
+    var sectionsTotal = sections.length;
+
+    for (var i = sectionsTotal - 1; i >= 0; i--) {
+      if (sections[i].dataset.type === 'poster'){
+        sections[i].innerHTML = templates['poster'](sections[i].dataset);
+      }
+    }
   });
 });
 define("main", function(){});
