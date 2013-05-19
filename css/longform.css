@@ -578,12 +578,12 @@ html {
   line-height: 1.5em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000316}}
 html {
   font-size: 16px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000319}}
 body {
   background: white;
   color: #666666;
@@ -591,12 +591,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000325}}
 h2, h3, h4 {
   margin: 0 0 1em 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000326}}
 h1 {
   margin: 0;
   font-size: 3em;
@@ -604,21 +604,21 @@ h1 {
   line-height: 1.35em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000329}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000331}}
 h2 {
   font-size: 1.25em;
   line-height: 1.2em;
   line-height: 1.35em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000335}}
 h3 {
   font-size: 1em;
   line-height: 1.5em;
   line-height: 1.35em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000339}}
 h4 {
   font-size: 0.875em;
   line-height: 1.71429em;
@@ -626,36 +626,36 @@ h4 {
   font-weight: normal;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000342}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000344}}
 p {
   margin: 0 0 1.5em 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000347}}
 a {
   text-decoration: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000346}}
-a:link {
-  color: #555555;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000347}}
-a:visited {
-  color: #555555;
-}
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000348}}
+a:link {
+  color: #2466a8;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000349}}
+a:visited {
+  color: #2466a8;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000350}}
 a:hover {
   color: #2466a8;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000353}}
 ul {
   margin: 0;
   padding: 0;
   display: inline-block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000355}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000357}}
 li {
   margin: 0;
   padding: 0;
@@ -663,35 +663,35 @@ li {
   list-style: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000362}}
 *, *:before, *:after {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000366}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000368}}
 .left {
   float: left !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000369}}
 .right {
   float: right !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000368}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000370}}
 .hide {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000374}}
 img, object, embed {
   height: auto;
   max-width: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000377}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000379}}
 .credit {
   text-align: right;
   font-size: 0.6875em;
@@ -699,57 +699,53 @@ img, object, embed {
   line-height: 1.35em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000383}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_base\.scss}line{font-family:\0000385}}
 .caption {
   font-size: 0.75em;
   line-height: 2em;
   line-height: 1.35em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\0000321}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\000031}}
 article.longformjs {
   min-width: 300px;
   min-height: 100%;
 }
 @media (min-width: 1024px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\0000321}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\000031}}
   article.longformjs {
     margin-left: auto;
     margin-right: auto;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\0000331}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\0000311}}
 article.longformjs h1, article.longformjs h2, article.longformjs h3, article.longformjs p {
   margin-left: auto;
   margin-right: auto;
   max-width: 640px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\0000342}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\0000322}}
 article.longformjs section {
   margin: 20px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\0000351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\0000331}}
 article.longformjs section.media p {
   margin-top: 0;
   margin-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\0000353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\0000333}}
 article.longformjs section.media img {
   margin-left: auto;
   margin-right: auto;
   display: block;
   max-height: 600px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\0000369}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_main\.scss}line{font-family:\0000343}}
 article.longformjs footer {
   background: #ddd;
 }
 
-/*
-- Slideshow
-- Video pop-up
-- Bio-card for individuals
-- Locator map
-- List of links
-- Credit/sourcing detail box 
-*/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\000033}}
+.media.poster {
+  background: #333;
+}

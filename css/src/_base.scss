@@ -1,8 +1,8 @@
 // QUICK SETTINGS ///////////////////////////////////
 $em-base            : 16px;
 $body-bg            : #fff !default;
-$linkColor          : #555;
 $coloredText        : #336699;
+$linkColor          : saturate($coloredText, 15%);
 $linkHoverColor     : saturate($coloredText, 15%);
 $highText           : saturate(lighten($coloredText, 15%), 40%);;
 $headingsFont       : "Helvetica", "Helvetica Neue", "Lato", Helvetica, Arial, sans-serif;
@@ -11,6 +11,8 @@ $body-font-color    : #666;
 @include establish-baseline;
 
 // BASE CLASSES ////////////////////////////////////////
+$content-max-width: 640px;
+
 html {
   font-size: $em-base;
 }
@@ -67,7 +69,7 @@ li {
 .right        { float: right !important; }
 .hide         { display: none; }
 
-// MEDIA ///////////////////////////////
+// media //
 
 img, object, embed {
     height: auto;
@@ -84,6 +86,22 @@ img, object, embed {
   @include adjust-font-size-to(12px);
   @include adjust-leading-to(.9);
 }
+
+// SINGULARITY VARS ///////////////////////////////////
+$small-bp: 320px;
+$medium-bp: 640px;
+$large-bp: 1024px;
+
+$small-cols: 6;
+$medium-cols: 8;
+$large-cols: 12;
+
+$output: 'float';
+$gutters: .2;
+$grids: 4;
+$grids: add-grid($small-cols at $small-bp);
+$grids: add-grid($medium-cols at $medium-bp);
+$grids: add-grid($large-cols at $large-bp);
 
 
 
