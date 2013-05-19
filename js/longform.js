@@ -12023,8 +12023,8 @@ helpers = helpers || Handlebars.helpers; data = data || {};
   else { stack1 = depth0.src; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "\" alt=\"";
-  if (stack1 = helpers.alt) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = depth0.alt; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  if (stack1 = helpers.altText) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.altText; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "\">\n  <div class=\"credit\"><p>";
   if (stack1 = helpers.credit) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
@@ -12044,12 +12044,24 @@ return this["JST"];
 require(['jquery', 'html5shiv', 'handlebars', 'templates'], function($, html5shiv, Handlebars, templates){
   $(function(){
 
-    var sections = document.getElementsByTagName('section');
+    var sections = document.getElementsByTagName('div'); // todo: filter by 'longformjs' article el
     var sectionsTotal = sections.length;
 
+    // Looks for template with name identical to 'type' property, adds html
+    function insertTemplatedContent(el, templateName){
+      el.innerHTML = templates[templateName](el.dataset);
+    } 
+
     for (var i = sectionsTotal - 1; i >= 0; i--) {
-      if (sections[i].dataset.type === 'poster'){
-        sections[i].innerHTML = templates['poster'](sections[i].dataset);
+      if (sections[i].dataset.componentType !== undefined){
+        //console.log("type: ", sections[i].dataset.display);
+
+        if (sections[i].dataset.display !== 'linked'){
+          // Insert 'inline' components
+          insertTemplatedContent(sections[i], sections[i].dataset.componentType);
+        } else {
+          // prepare 'linked' components
+        }
       }
     }
   });

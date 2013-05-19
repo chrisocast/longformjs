@@ -13,8 +13,8 @@ helpers = helpers || Handlebars.helpers; data = data || {};
   else { stack1 = depth0.src; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "\" alt=\"";
-  if (stack1 = helpers.alt) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = depth0.alt; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  if (stack1 = helpers.altText) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.altText; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "\">\n  <div class=\"credit\"><p>";
   if (stack1 = helpers.credit) { stack1 = stack1.call(depth0, {hash:{},data:data}); }

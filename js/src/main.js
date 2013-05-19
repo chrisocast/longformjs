@@ -1,12 +1,24 @@
 require(['jquery', 'html5shiv', 'handlebars', 'templates'], function($, html5shiv, Handlebars, templates){
   $(function(){
 
-    var sections = document.getElementsByTagName('section');
+    var sections = document.getElementsByTagName('div'); // todo: filter by 'longformjs' article el
     var sectionsTotal = sections.length;
 
+    // Looks for template with name identical to 'type' property, adds html
+    function insertTemplatedContent(el, templateName){
+      el.innerHTML = templates[templateName](el.dataset);
+    } 
+
     for (var i = sectionsTotal - 1; i >= 0; i--) {
-      if (sections[i].dataset.type === 'poster'){
-        sections[i].innerHTML = templates['poster'](sections[i].dataset);
+      if (sections[i].dataset.componentType !== undefined){
+        //console.log("type: ", sections[i].dataset.display);
+
+        if (sections[i].dataset.display !== 'linked'){
+          // Insert 'inline' components
+          insertTemplatedContent(sections[i], sections[i].dataset.componentType);
+        } else {
+          // prepare 'linked' components
+        }
       }
     }
   });

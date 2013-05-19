@@ -114,7 +114,8 @@ module.exports = function(grunt) {
         options: {
           amd: true,
           processName: function(filename) {
-            return filename.replace('js/src/templates/', '').replace('.hbs', '');
+            var segments = filename.split("/");
+            return segments[segments.length - 1].split(".")[0];
           }
         },
         files: {
