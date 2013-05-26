@@ -142,7 +142,8 @@ module.exports = function(grunt) {
           module: false,
           console: false,
           jQuery: true,
-          require: true
+          require: true,
+          Handlebars: true
         }
       },
       files: ['js/src/*.js' ]

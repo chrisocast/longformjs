@@ -1,5 +1,35 @@
+// GENERAL ///////////////////////////
+
+// MASTHEAD //////////////////////////
+
 // POSTER IMAGE //////////////////////
 
-.media.poster{
-  background:#333;
+.component-poster{
+
+  .component-poster-info{
+    background: #eee;
+    padding-bottom:1em;
+  }
+
+  .component-poster-image{
+
+    /* Default 'inline' display */
+    background: #222;
+    img{
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* Optional 'fixed' display */
+    &.fixed{
+      display: block;
+      position: relative;
+      background-color: transparent;
+      background-size: cover;
+      background-attachment: fixed;
+      padding-bottom: 45%;
+      background-position: center center;
+    }
+  }
 }
+

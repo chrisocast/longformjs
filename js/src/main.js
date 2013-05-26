@@ -1,6 +1,7 @@
-require(['jquery', 'html5shiv', 'handlebars', 'templates'], function($, html5shiv, Handlebars, templates){
+require(['jquery', 'html5shiv', 'handlebars', 'templates', 'helpers'], 
+  function($, html5shiv, Handlebars, templates, helpers){
+  
   $(function(){
-
     var sections = document.getElementsByTagName('div'); // todo: filter by 'longformjs' article el
     var sectionsTotal = sections.length;
 
