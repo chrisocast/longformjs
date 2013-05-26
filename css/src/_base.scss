@@ -80,6 +80,8 @@ img, object, embed {
   text-align: right;
   @include adjust-font-size-to(11px);
   @include adjust-leading-to(.9);
+  text-transform:uppercase;
+  color: #888;
 }
 
 .caption{
