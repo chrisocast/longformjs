@@ -5,10 +5,11 @@ $coloredText        : #336699;
 $linkColor          : saturate($coloredText, 15%);
 $linkHoverColor     : saturate($coloredText, 15%);
 $highText           : saturate(lighten($coloredText, 15%), 40%);;
-$headingsFont       : "Helvetica", "Helvetica Neue", "Lato", Helvetica, Arial, sans-serif;
-$body-font-family   : sans-serif;
-$body-font-color    : #666;
-@include establish-baseline;
+$body-font-family   : "Times New Roman","Times", serif;
+$body-font-color    : #000;
+$sans-serif-font-family :  "Oswald", "Helvetica", "Helvetica Neue", "Lato", Helvetica, Arial, sans-serif;
+$serif-font-family :  "Lora", "Georgia", "Times New Roman","Times",serif;
+@include establish-baseline; 
 
 // BASE CLASSES ////////////////////////////////////////
 $content-max-width: 640px;
@@ -17,19 +18,27 @@ html {
   font-size: $em-base;
 }
 body {
+  @include adjust-font-size-to(20px);
+  @include adjust-leading-to(.9);
   background: $body-bg;
   color: $body-font-color;
   font-family: $body-font-family;
   -webkit-font-smoothing: antialiased;
 }
-h2, h3, h4{margin:0 0 1em 0;}
+h2, h3, h4{
+  font-family: $sans-serif-font-family;
+  margin:0 0 1em 0;
+  font-weight: 300; 
+}
 h1 {
+  font-family: $sans-serif-font-family;
+  font-weight: 700; 
   margin:0;
-  @include adjust-font-size-to(48px);
+  @include adjust-font-size-to(64px);
   @include adjust-leading-to(.9);
 }
 h2 {
-  @include adjust-font-size-to(20px);
+  @include adjust-font-size-to(22px);
   @include adjust-leading-to(.9);
 }
 h3 {
@@ -43,6 +52,7 @@ h4 {
 }
 p {
   margin: 0 0 1.5em 0;
+  line-height:1.5em;
 }
 a {
   &:link {color:$linkColor;}
@@ -69,24 +79,36 @@ li {
 .right        { float: right !important; }
 .hide         { display: none; }
 
-// media //
+// fonts //
+.serif {
+  font-family: $serif-font-family;
+}
+.sans-serif{
+  font-family: $sans-serif-font-family;
+}
 
+
+// media //
 img, object, embed {
     height: auto;
     max-width: 100%;
 }
 
 .credit{
+  font-family: sans-serif;
   text-align: right;
   @include adjust-font-size-to(11px);
   @include adjust-leading-to(.9);
   text-transform:uppercase;
-  color: #888;
+  color: #aaa;
 }
 
 .caption{
+  font-family: sans-serif;
   @include adjust-font-size-to(12px);
   @include adjust-leading-to(.9);
+  color: #666;
+  line-height:normal;
 }
 
 // SINGULARITY VARS ///////////////////////////////////

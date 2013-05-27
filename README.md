@@ -1,5 +1,12 @@
 # longformjs
 
+
+## MAIN ELEMENTS
+
+- Article El
+  - Add 'serif' or 'sans-serif'(default) class to change header fonts
+
+
 ## COMPONENTS
 
 - Poster image

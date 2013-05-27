@@ -2,6 +2,30 @@
 
 // MASTHEAD //////////////////////////
 
+.component-masthead{
+
+  h1{
+    color: #333;
+    text-shadow: 3px 3px 5px #ccc;
+  }
+
+  h2{
+    color:#aaa;
+  }
+
+  .byline {
+    color:#aaa;
+    text-align:right;
+    border-top: solid 1px #ccc;
+    padding: 4px;
+    font-style: italic;
+
+    .author{
+      font-weight: bold;
+    }
+  }
+}
+
 // POSTER IMAGE //////////////////////
 
 .component-poster{
