@@ -1,39 +1,46 @@
+// Base classes, resets, and variables that do //////////
+// not change via config settings or js events //////////
+
 // QUICK SETTINGS ///////////////////////////////////
 $em-base            : 16px;
-$body-bg            : #fff !default;
+$article-bg-color   : #fff !default;
 $coloredText        : #336699;
 $linkColor          : saturate($coloredText, 15%);
 $linkHoverColor     : saturate($coloredText, 15%);
 $highText           : saturate(lighten($coloredText, 15%), 40%);;
-$body-font-family   : "Times New Roman","Times", serif;
-$body-font-color    : #000;
+$article-font-family   : "Times New Roman","Times", serif;
+$article-font-color    : #000;
 $sans-serif-font-family :  "Oswald", "Helvetica", "Helvetica Neue", "Lato", Helvetica, Arial, sans-serif;
 $serif-font-family :  "Lora", "Georgia", "Times New Roman","Times",serif;
-@include establish-baseline; 
+@include establish-baseline;
 
-// BASE CLASSES ////////////////////////////////////////
 $content-max-width: 640px;
 
-html {
+// BASE CLASSES ////////////////////////////////////////
+
+article.longformjs {
   font-size: $em-base;
-}
-body {
-  @include adjust-font-size-to(20px);
-  @include adjust-leading-to(.9);
-  background: $body-bg;
-  color: $body-font-color;
-  font-family: $body-font-family;
+  color: $article-font-color;
+  font-family: $article-font-family;
   -webkit-font-smoothing: antialiased;
-}
-h2, h3, h4{
-  font-family: $sans-serif-font-family;
-  margin:0 0 1em 0;
-  font-weight: 300; 
+
+  background: $article-bg-color;
+  min-width: 300px;
+  min-height: 100%;
 }
 h1 {
   font-family: $sans-serif-font-family;
   font-weight: 700; 
-  margin:0;
+  margin: 0 auto;
+  max-width: $content-max-width;
+}
+h2, h3, h4{
+  font-family: $sans-serif-font-family;
+  font-weight: 300;
+  margin:0 auto 1em;
+  max-width: $content-max-width; 
+}
+h1{
   @include adjust-font-size-to(64px);
   @include adjust-leading-to(.9);
 }
@@ -42,17 +49,17 @@ h2 {
   @include adjust-leading-to(.9);
 }
 h3 {
-  @include adjust-font-size-to(16px);
+  @include adjust-font-size-to(18px);
   @include adjust-leading-to(.9);
 }
 h4 {
   @include adjust-font-size-to(14px);
   @include adjust-leading-to(.9);
-  font-weight: normal;
 }
 p {
-  margin: 0 0 1.5em 0;
+  margin: 0 auto 1.5em;
   line-height:1.5em;
+  max-width: $content-max-width;
 }
 a {
   &:link {color:$linkColor;}
@@ -71,44 +78,18 @@ li {
 }
 *, *:before, *:after {
   box-sizing: border-box;
-    -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
-.left         { float: left !important; }
-.right        { float: right !important; }
-.hide         { display: none; }
-
-// fonts //
-.serif {
-  font-family: $serif-font-family;
-}
-.sans-serif{
-  font-family: $sans-serif-font-family;
-}
-
+.left  { float: left !important; }
+.right { float: right !important; }
+.hide  { display: none; }
 
 // media //
 img, object, embed {
     height: auto;
     max-width: 100%;
-}
-
-.credit{
-  font-family: sans-serif;
-  text-align: right;
-  @include adjust-font-size-to(11px);
-  @include adjust-leading-to(.9);
-  text-transform:uppercase;
-  color: #aaa;
-}
-
-.caption{
-  font-family: sans-serif;
-  @include adjust-font-size-to(12px);
-  @include adjust-leading-to(.9);
-  color: #666;
-  line-height:normal;
 }
 
 // SINGULARITY VARS ///////////////////////////////////

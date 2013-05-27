@@ -4,8 +4,7 @@
 ## MAIN ELEMENTS
 
 - Article El
-  - Add 'serif' or 'sans-serif'(default) class to change header fonts
-
+  - Everything is contained with the article el with class=longformjs
 
 ## COMPONENTS
 

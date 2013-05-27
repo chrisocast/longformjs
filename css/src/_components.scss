@@ -1,4 +1,4 @@
-// GENERAL ///////////////////////////
+// Component-specific styles & configurable options /////////
 
 // MASTHEAD //////////////////////////
 
@@ -11,6 +11,14 @@
 
   h2{
     color:#aaa;
+  }
+
+  &.serif {
+    h1, h2 {font-family: $serif-font-family;}
+  }
+
+  &.sans-serif{
+    h1, h2{font-family: $sans-serif-font-family;}
   }
 
   .byline {
@@ -39,9 +47,7 @@
       margin-bottom:0;
     }
 
-    .caption{
-      padding-top: .5em;
-    }
+    .caption{ padding-top: .5em; }
   }
 
   .component-poster-image{

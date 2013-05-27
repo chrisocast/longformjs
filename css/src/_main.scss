@@ -1,7 +1,7 @@
-article.longformjs {
+// Central styles that are not specific to /////
+// any component or configurable setting   /////
 
-  min-width: 300px;
-  min-height: 100%;
+article.longformjs {
 
   @include breakpoint($large-bp) {
     margin-left: auto;
@@ -10,16 +10,31 @@ article.longformjs {
 
   section{
     margin: 20px 0;
+
+    p{
+      @include adjust-font-size-to(20px);
+      @include adjust-leading-to(.9);
+    }
   }
 
   footer{
-    //padding: 0 10px;
-    background: #ddd; //temp
+    background: #eee;
   }
 
-  h1, h2, h3, p {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: $content-max-width;
+  .credit{
+    font-family: sans-serif;
+    text-align: right;
+    @include adjust-font-size-to(11px);
+    @include adjust-leading-to(.9);
+    text-transform:uppercase;
+    color: #aaa;
+  }
+
+  .caption{
+    font-family: sans-serif;
+    @include adjust-font-size-to(14px);
+    @include adjust-leading-to(.9);
+    color: #666;
+    line-height:normal;
   }
 }
