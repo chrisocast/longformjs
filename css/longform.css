@@ -742,63 +742,67 @@ article.longformjs .caption {
   line-height: normal;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\000037}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\000035}}
+.component-masthead {
+  background: #eee;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\000039}}
 .component-masthead h1 {
   color: #333;
   text-shadow: 3px 3px 5px #ccc;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000312}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000314}}
 .component-masthead h2 {
   color: #aaa;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000319}}
 .component-masthead.serif h1, .component-masthead.serif h2 {
   font-family: "Lora", "Georgia", "Times New Roman", "Times", serif;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000321}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000323}}
 .component-masthead.sans-serif h1, .component-masthead.sans-serif h2 {
   font-family: "Oswald", "Helvetica", "Helvetica Neue", "Lato", Helvetica, Arial, sans-serif;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000326}}
 .component-masthead .byline {
-  color: #aaa;
+  color: #666;
   text-align: right;
-  border-top: solid 1px #ccc;
+  border-top: solid 1px white;
   padding: 4px;
   font-style: italic;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000331}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000333}}
 .component-masthead .byline .author {
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000341}}
-.component-poster .component-poster-info {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000343}}
+.component-image .component-image-info {
   background: #eee;
   padding: .5em 0 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000345}}
-.component-poster .component-poster-info p {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000347}}
+.component-image .component-image-info p {
   margin-top: 0;
   margin-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000350}}
-.component-poster .component-poster-info .caption {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000352}}
+.component-image .component-image-info .caption {
   padding-top: .5em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000353}}
-.component-poster .component-poster-image {
-  /* Default 'inline' display */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000355}}
+.component-image .component-image-image {
+  /* Default 'inline' position */
   background: #222;
-  /* Optional 'fixed' display */
+  /* Optional 'fixed' position */
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000357}}
-.component-poster .component-poster-image img {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000359}}
+.component-image .component-image-image img {
   margin: 0 auto;
   display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000363}}
-.component-poster .component-poster-image.fixed {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/j-chca\/GitHub\/chrisocast\/longformjs\/css\/src\/_components\.scss}line{font-family:\0000365}}
+.component-image .component-image-image.fixed {
   display: block;
   position: relative;
   background-color: transparent;

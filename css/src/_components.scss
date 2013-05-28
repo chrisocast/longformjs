@@ -4,6 +4,8 @@
 
 .component-masthead{
 
+  background: #eee;
+
   h1{
     color: #333;
     text-shadow: 3px 3px 5px #ccc;
@@ -22,9 +24,9 @@
   }
 
   .byline {
-    color:#aaa;
+    color:#666;
     text-align:right;
-    border-top: solid 1px #ccc;
+    border-top: solid 1px white;
     padding: 4px;
     font-style: italic;
 
@@ -34,11 +36,11 @@
   }
 }
 
-// POSTER IMAGE //////////////////////
+// IMAGE //////////////////////
 
-.component-poster{
+.component-image{
 
-  .component-poster-info{
+  .component-image-info{
     background: #eee;
     padding: .5em 0 1em;
 
@@ -50,16 +52,16 @@
     .caption{ padding-top: .5em; }
   }
 
-  .component-poster-image{
+  .component-image-image{
 
-    /* Default 'inline' display */
+    /* Default 'inline' position */
     background: #222;
     img{
       margin: 0 auto;
       display: block;
     }
 
-    /* Optional 'fixed' display */
+    /* Optional 'fixed' position */
     &.fixed{
       display: block;
       position: relative;
